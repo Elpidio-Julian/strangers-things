@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import ReactDOM from 'react-dom/client';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import './style.css'
 import {
   Navbar,
@@ -14,7 +14,9 @@ import {
 } from './api'
 
 const App = () => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
+  const [token, setToken] = useState();
+  const navigate = useNavigate();
 
   async function fetchPosts() {
     const results = await getPosts()
@@ -28,13 +30,13 @@ const App = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar setToken={ setToken } />
       <Routes>
         {/* new Route setup */}
         <Route path='/' element={<Home />}/>
         <Route path='/posts' element={<Posts posts={ posts } />}/>
         <Route path='/profile' element={<Profile />}/>
-        <Route path='/register' element={<Register />}/>
+        <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } />}/>
       </Routes>
     </div>
   )

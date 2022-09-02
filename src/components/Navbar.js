@@ -11,10 +11,15 @@ const Navbar = () => {
                 <Link to='/profile'>Profile</Link>
                 <Link to='/register'>Register</Link>
                 <Link to='/login'>Login</Link>
-                <Link to='/logout'>Logout</Link>
+                <Link to='/' onClick={() => {
+                    window.localStorage.removeItem('token');
+                    setToken('');
+                }}>Logout</Link>
             </nav>
         </header>
     )
 }
 
 export default Navbar;
+
+
