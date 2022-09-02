@@ -6,7 +6,8 @@ import {
   Navbar,
   Posts,
   Profile,
-  Home
+  Home,
+  Register
 } from './components'
 import {
   getPosts,
@@ -33,6 +34,7 @@ const App = () => {
         <Route path='/' element={<Home />}/>
         <Route path='/posts' element={<Posts posts={ posts } />}/>
         <Route path='/profile' element={<Profile />}/>
+        <Route path='/register' element={<Register />}/>
       </Routes>
     </div>
   )
