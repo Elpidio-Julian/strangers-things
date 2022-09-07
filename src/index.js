@@ -18,7 +18,10 @@ import {
 const App = () => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState('');
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
+
+  console.log(user)
 
   function logout() {
     window.localStorage.removeItem('token');
@@ -30,20 +33,26 @@ const App = () => {
     setPosts(results.data.posts)
   }
 
-  function getMe() {
+  async function getMe() {
     const storedToken = window.localStorage.getItem('token');
     if (!token) {
       setToken(storedToken)
+      return;
     }
-    getUserDetails(token)
+    const results = await getUserDetails(token)
+    if (results.success) {setUser(results.data)}
+    else {
+      console.log(results.error.message)
+    }
+    
   }
 
   useEffect(() => {
     fetchPosts()
   }, [])
   useEffect(() => {
-    console.log('token is ', token)
-  }, [])
+    getMe();
+  }, [token])
 
 
 
