@@ -7,36 +7,56 @@ import {
   Posts,
   Profile,
   Home,
-  Register
+  Register,
+  Login
 } from './components'
 import {
   getPosts,
+  getUserDetails
 } from './api'
 
 const App = () => {
   const [posts, setPosts] = useState([]);
-  const [token, setToken] = useState();
+  const [token, setToken] = useState('');
   const navigate = useNavigate();
+
+  function logout() {
+    window.localStorage.removeItem('token');
+    setToken('');
+  }
 
   async function fetchPosts() {
     const results = await getPosts()
-    console.log(results)
     setPosts(results.data.posts)
+  }
+
+  function getMe() {
+    const storedToken = window.localStorage.getItem('token');
+    if (!token) {
+      setToken(storedToken)
+    }
+    getUserDetails(token)
   }
 
   useEffect(() => {
     fetchPosts()
   }, [])
+  useEffect(() => {
+    console.log('token is ', token)
+  }, [])
+
+
 
   return (
     <div>
-      <Navbar setToken={ setToken } />
+      <Navbar logout={ logout } />
       <Routes>
         {/* new Route setup */}
         <Route path='/' element={<Home />}/>
         <Route path='/posts' element={<Posts posts={ posts } />}/>
         <Route path='/profile' element={<Profile />}/>
-        <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } />}/>
+        <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } token={token}/>}/>
+        <Route path='/login' element={<Login setToken={ setToken } navigate={ navigate } token={token}/>} />
       </Routes>
     </div>
   )
