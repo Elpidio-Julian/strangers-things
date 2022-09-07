@@ -26,10 +26,11 @@ const App = () => {
   function logout() {
     window.localStorage.removeItem('token');
     setToken('');
+    setUser({});
   }
 
   async function fetchPosts() {
-    const results = await getPosts()
+    const results = await getPosts('token')
     setPosts(results.data.posts)
   }
 
@@ -49,7 +50,7 @@ const App = () => {
 
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [token])
   useEffect(() => {
     getMe();
   }, [token])
