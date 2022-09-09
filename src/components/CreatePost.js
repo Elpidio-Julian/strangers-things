@@ -15,7 +15,7 @@ const CreatePost = ({ token }) => {
         const result = await createPost(token, newPost)
     }
     return (
-        <button onClick={() => addPost()}>add post</button>
+        <button onClick={() => addPost()}>add a new post</button>
     )
 }
 

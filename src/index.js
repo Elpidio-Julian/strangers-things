@@ -9,7 +9,8 @@ import {
   Home,
   Register,
   Login,
-  CreatePost
+  CreatePost,
+  SinglePostView
 } from './components'
 import {
   getPosts,
@@ -65,9 +66,11 @@ const App = () => {
         {/* new Route setup */}
         <Route path='/' element={<Home />}/>
         <Route path='/posts' element={<Posts posts={ posts } />}/>
+        <Route path='/posts/:id' element={<SinglePostView posts={ posts }/>}/>
         <Route path='/profile' element={<Profile user={user}/>}/>
         <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } token={token}/>}/>
         <Route path='/login' element={<Login setToken={ setToken } navigate={ navigate } token={token}/>} />
+        <Route exact path='/posts/create-post' element={<CreatePost token={ token }/>}/>
       </Routes>
     </div>
   )

@@ -1,4 +1,5 @@
-import Reactgit  from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom'
 
 const Posts = ({ posts }) => {
 
@@ -16,12 +17,12 @@ const Posts = ({ posts }) => {
                     {
                         isAuthor ? (
                             <>
-                            <button>View</button>
+                            <Link to={`/posts/${_id}`}>View</Link>
                             <button>Delete</button>
                             <button>Edit</button>
                             </>
                         ) : (
-                            <button>View</button>
+                            <Link to={`/posts/${_id}`}>View</Link>
                         )
                     }
                 </div>
