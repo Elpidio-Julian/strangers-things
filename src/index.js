@@ -8,7 +8,8 @@ import {
   Profile,
   Home,
   Register,
-  Login
+  Login,
+  CreatePost
 } from './components'
 import {
   getPosts,
@@ -59,12 +60,12 @@ const App = () => {
 
   return (
     <div>
-      <Navbar logout={ logout } />
+      <Navbar logout={ logout } token={ token } />
       <Routes>
         {/* new Route setup */}
         <Route path='/' element={<Home />}/>
         <Route path='/posts' element={<Posts posts={ posts } />}/>
-        <Route path='/profile' element={<Profile />}/>
+        <Route path='/profile' element={<Profile user={user}/>}/>
         <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } token={token}/>}/>
         <Route path='/login' element={<Login setToken={ setToken } navigate={ navigate } token={token}/>} />
       </Routes>
