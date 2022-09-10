@@ -120,3 +120,22 @@ export const updatePost = async (token, { title, description, price, location, w
         console.log('error updating post')
     }
 }
+
+export const deliverMessage = async ({token, message, id}) => {
+    try {
+        const response = await fetch(`${baseURL}/posts/${id}/messages`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              message: {
+                content: message.content,
+              }
+            })
+        })
+    } catch(err) {
+        console.log('error sending message')
+    }
+}
