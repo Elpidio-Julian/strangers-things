@@ -10,7 +10,8 @@ import {
   Register,
   Login,
   CreatePost,
-  SinglePostView
+  SinglePostView,
+  EditPost,
 } from './components'
 import {
   getPosts,
@@ -67,10 +68,11 @@ const App = () => {
         <Route path='/' element={<Home />}/>
         <Route path='/posts' element={<Posts posts={ posts } />}/>
         <Route path='/posts/:id' element={<SinglePostView posts={ posts }/>}/>
+        <Route path='/posts/edit-posts/:id' element={ <EditPost />} posts={ posts }/>
         <Route path='/profile' element={<Profile user={user}/>}/>
         <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } token={token}/>}/>
         <Route path='/login' element={<Login setToken={ setToken } navigate={ navigate } token={token}/>} />
-        <Route exact path='/posts/create-post' element={<CreatePost token={ token }/>}/>
+        <Route exact path='/posts/create-post' element={<CreatePost token={ token } navigate={navigate}/>}/>
       </Routes>
     </div>
   )

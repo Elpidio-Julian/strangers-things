@@ -19,7 +19,7 @@ const Posts = ({ posts }) => {
                             <>
                             <Link to={`/posts/${_id}`}>View</Link>
                             <button>Delete</button>
-                            <button>Edit</button>
+                            <Link to={`/posts/edit-posts/${_id}`}>Edit</Link>
                             </>
                         ) : (
                             <Link to={`/posts/${_id}`}>View</Link>
