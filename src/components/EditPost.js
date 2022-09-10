@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import { useParams } from 'react-router-dom'
+import { updatePost } from '../api';
 
 
-const EditPost = ({ posts }) => {
+const EditPost = ({ posts, token }) => {
     const [newTitle, setNewTitle] = useState(title);
     const [newDescription, setNewDescription] = useState(description);
     const [newLocation, setNewLocation] = useState(location);
-    const [newWillDeliver, setNewWillDeliver] = useState(willDeliver)
+    const [newWillDeliver, setNewWillDeliver] = useState(willDeliver);
+    const [newPrice, setNewPrice] = useState(price);
 
     const { id } = useParams();
     const [currentPost] = posts.filter(post => post._id === id);
@@ -14,12 +16,13 @@ const EditPost = ({ posts }) => {
 
     async function editPost() {
         const updatedPost = {
-            newTitle,
-            newDescription,
-            newLocation,
-            newPrice,
-            newWillDeliver,
+            title: newTitle,
+            description: newDescription,
+            location: newLocation,
+            price: newPrice,
+            willDeliver: newWillDeliver,
         }
+        await updatePost(token, updatedPost, id)
         console.log(updatedPost)
     }
 
@@ -42,6 +45,11 @@ const EditPost = ({ posts }) => {
             type='text'
             placeholder={location}
             onChange={(event) => setNewLocation(event.target.value)}
+            />
+            <input
+            type='text'
+            placeholder={price}
+            onChange={(event) => setNewPrice(event.target.value)}
             />
             <input
             type='checkbox'

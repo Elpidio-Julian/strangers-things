@@ -68,7 +68,7 @@ const App = () => {
         <Route path='/' element={<Home />}/>
         <Route path='/posts' element={<Posts posts={ posts } />}/>
         <Route path='/posts/:id' element={<SinglePostView posts={ posts }/>}/>
-        <Route path='/posts/edit-posts/:id' element={ <EditPost />} posts={ posts }/>
+        <Route path='/posts/edit-posts/:id' element={ <EditPost />} posts={ posts } token={token}/>
         <Route path='/profile' element={<Profile user={user}/>}/>
         <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } token={token}/>}/>
         <Route path='/login' element={<Login setToken={ setToken } navigate={ navigate } token={token}/>} />

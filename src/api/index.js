@@ -96,3 +96,27 @@ export const createPost = async (token, { title, description, price, location, w
         console.log('error creating a new post')
     }
 }
+
+export const updatePost = async (token, { title, description, price, location, willDeliver, _id}) => {
+    try {
+        const response = await fetch(`${baseURL}/posts/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                post: {
+                    title,
+                    description,
+                    price,
+                    location,
+                    willDeliver
+                }
+            })
+
+        })
+    } catch(err) {
+        console.log('error updating post')
+    }
+}
