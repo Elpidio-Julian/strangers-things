@@ -10,7 +10,7 @@ const Login = ({setToken, navigate, token}) => {
         if (results.success) {
             setToken(results.data.token)
             window.localStorage.setItem('token', results.data.token)
-            navigate('/')
+            navigate('/profile')
         } else {
             console.log(results.error.message)
         }

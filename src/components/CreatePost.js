@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { createPost } from '../api'
 
 
-const CreatePost = ({ token, navigate }) => {
+const CreatePost = ({ token, fetchPosts, navigate }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -20,6 +19,7 @@ const CreatePost = ({ token, navigate }) => {
 
     async function addPost() {
         const result = await createPost(token, newPost)
+        fetchPosts();
         navigate('/posts')
     }
     return (

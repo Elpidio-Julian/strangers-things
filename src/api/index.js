@@ -73,28 +73,30 @@ export const getUserDetails = async (token) => {
     }
 }
 
-export const createPost = async (token, { title, description, price, location, willDeliver}) => {
-    try {
-        const response = await fetch(`${baseURL}/posts`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                post: {
-                    title,
-                    description,
-                    price,
-                    location,
-                    willDeliver
-                }
-            })
-
-        })
-    } catch(err) {
-        console.log('error creating a new post')
-    }
+export const createPost = async (token, {title, description, price, location, willDeliver})=> {
+  try {
+    const response = await fetch(`${baseURL}/posts`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        post: {
+          title,
+          description,
+          price,
+          location,
+          willDeliver
+        }
+      })
+    })
+    
+    const result = await response.json();
+    return result;
+  } catch(ex) {
+    console.log('error creating a new post')
+  }
 }
 
 export const updatePost = async (token, { title, description, price, location, willDeliver, _id}) => {

@@ -33,14 +33,17 @@ const App = () => {
   }
 
   async function fetchPosts() {
-    const results = await getPosts('token')
+    const results = await getPosts(token)
     setPosts(results.data.posts)
   }
 
   async function getMe() {
     const storedToken = window.localStorage.getItem('token');
+    
     if (!token) {
-      setToken(storedToken)
+      if (storedToken) {
+        setToken(storedToken)
+      }
       return;
     }
     const results = await getUserDetails(token)
@@ -64,15 +67,38 @@ const App = () => {
     <div>
       <Navbar logout={ logout } token={ token } />
       <Routes>
-        {/* new Route setup */}
-        <Route path='/' element={<Home />}/>
-        <Route path='/posts' element={<Posts posts={ posts } />}/>
-        <Route path='/posts/:id' element={<SinglePostView posts={ posts } token={ token }/>}/>
-        <Route path='/posts/edit-posts/:id' element={ <EditPost />} posts={ posts } token={token}/>
-        <Route path='/profile' element={<Profile user={user}/>}/>
-        <Route path='/register' element={<Register setToken={ setToken } navigate={ navigate } token={token}/>}/>
-        <Route path='/login' element={<Login setToken={ setToken } navigate={ navigate } token={token}/>} />
-        <Route exact path='/posts/create-post' element={<CreatePost token={ token } navigate={navigate}/>}/>
+        <Route 
+        path='/' 
+        element={<Home />}
+        />
+        <Route 
+        path='/posts' 
+        element={<Posts posts={ posts } />}
+        />
+        <Route 
+        path='/posts/:id' 
+        element={<SinglePostView posts={ posts } token={ token }/>}
+        />
+        <Route 
+        path='/posts/edit-posts/:id' 
+        element={ <EditPost posts={ posts } token={token} />}  
+        />
+        <Route 
+        path='/profile' 
+        element={<Profile user={user}/>}
+        />
+        <Route 
+        path='/register' 
+        element={<Register setToken={ setToken } navigate={ navigate } token={token}/>}
+        />
+        <Route 
+        path='/login' 
+        element={<Login setToken={ setToken } navigate={ navigate } />} 
+        />
+        <Route 
+        exact path='/posts/create-post' 
+        element={<CreatePost token={ token } fetchPosts={ fetchPosts } navigate={navigate}/>}
+        />
       </Routes>
     </div>
   )
