@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 const Posts = ({ posts }) => {
+    const [confirmDel, setConfirmDel] = useState(false)
 
     return (
         <div>
+            <Link to={'/posts/create-post'}>Add a new Post</Link>
        {
         posts.map((post) => {
             const {description, location, price, title, _id, isAuthor} = post;

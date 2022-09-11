@@ -83,17 +83,16 @@ export const createPost = async (token, { title, description, price, location, w
             },
             body: JSON.stringify({
                 post: {
-                    title,
-                    description,
-                    price,
-                    location,
-                    willDeliver
+                    title: 'test',
+                    description: 'test',
+                    price: 'test',
+                    willDeliver: false
                 }
             })
 
         })
-    } catch {
-        console.log('error creating a new post')
+    } catch(err) {
+        console.log('error creating a new post', err)
     }
 }
 
@@ -138,4 +137,18 @@ export const deliverMessage = async ({token, message, id}) => {
     } catch(err) {
         console.log('error sending message')
     }
+}
+
+export const deactivatePost = async ({token, id}) => {
+    try {
+        const response = await fetch(`${baseURL}/posts/${id}`, {
+            method: "DELETE",
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            }})
+    } catch(err) {
+        console.log('error deactivating post')
+    }
+
 }
