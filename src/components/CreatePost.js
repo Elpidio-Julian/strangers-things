@@ -6,7 +6,7 @@ const CreatePost = ({ token, fetchPosts, navigate }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [location, setLocation] = useState('');
+    const [location, setLocation] = useState(null);
     const [willDeliver, setWillDeliver] = useState(false);
 
     const newPost = {

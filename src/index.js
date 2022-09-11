@@ -73,7 +73,7 @@ const App = () => {
         />
         <Route 
         path='/posts' 
-        element={<Posts posts={ posts } />}
+        element={<Posts posts={ posts } token={ token } fetchPosts={fetchPosts}/>}
         />
         <Route 
         path='/posts/:id' 

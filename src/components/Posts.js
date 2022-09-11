@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import { deactivatePost } from '../api';
 
-const Posts = ({ posts }) => {
+
+const Posts = ({ posts, token, fetchPosts }) => {
     const [confirmDel, setConfirmDel] = useState(false)
     console.log(posts)
+    async function deletePost({token, _id}) {
+        await deactivatePost({token, _id});
+    }
     return (
         <div>
             <Link to={'/posts/create-post'}>Add a new Post</Link>
@@ -20,7 +25,16 @@ const Posts = ({ posts }) => {
                         isAuthor ? (
                             <>
                             <Link to={`/posts/${_id}`}>View</Link>
-                            <button>Delete</button>
+                            {
+                                confirmDel ? (
+                                    <button onClick={() => {
+                                        deletePost({token, _id})
+                                        fetchPosts();
+                                    }}>Confirm Delete</button>
+                                    ) : (
+                                    <button onClick={() => setConfirmDel(true)}>Delete</button>
+                                    )
+                                }
                             <Link to={`/posts/edit-posts/${_id}`}>Edit</Link>
                             </>
                         ) : (

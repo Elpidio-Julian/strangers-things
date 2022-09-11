@@ -142,9 +142,9 @@ export const deliverMessage = async ({token, message, id}) => {
     }
 }
 
-export const deactivatePost = async ({token, id}) => {
+export const deactivatePost = async ({token, _id}) => {
     try {
-        const response = await fetch(`${baseURL}/posts/${id}`, {
+        const response = await fetch(`${baseURL}/posts/${_id}`, {
             method: "DELETE",
             headers: {
               'Content-Type': 'application/json',
