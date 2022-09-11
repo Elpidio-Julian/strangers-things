@@ -4,15 +4,17 @@ import { updatePost } from '../api';
 
 
 const EditPost = ({ posts, token }) => {
+    
+    const { id } = useParams();
+    const [currentPost] = posts.filter(post => post._id === id);
+    const { title, description, location, price, willDeliver } = currentPost;
+    
     const [newTitle, setNewTitle] = useState(title);
     const [newDescription, setNewDescription] = useState(description);
     const [newLocation, setNewLocation] = useState(location);
     const [newWillDeliver, setNewWillDeliver] = useState(willDeliver);
     const [newPrice, setNewPrice] = useState(price);
-
-    const { id } = useParams();
-    const [currentPost] = posts.filter(post => post._id === id);
-    const { title, description, location, price, willDeliver } = currentPost;
+    
 
     async function editPost() {
         const updatedPost = {
