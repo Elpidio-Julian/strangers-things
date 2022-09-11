@@ -81,7 +81,7 @@ const App = () => {
         />
         <Route 
         path='/posts/edit-posts/:id' 
-        element={ <EditPost posts={ posts } token={token} />}  
+        element={ <EditPost posts={ posts } token={token} navigate={ navigate } fetchPosts={ fetchPosts } />}  
         />
         <Route 
         path='/profile' 

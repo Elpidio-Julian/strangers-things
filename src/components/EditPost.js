@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { updatePost } from '../api';
 
 
-const EditPost = ({ posts, token }) => {
+const EditPost = ({ posts, token, navigate, fetchPosts }) => {
     
     const { id } = useParams();
     const [currentPost] = posts.filter(post => post._id === id);
@@ -23,15 +23,18 @@ const EditPost = ({ posts, token }) => {
             location: newLocation,
             price: newPrice,
             willDeliver: newWillDeliver,
+            id,
         }
-        await updatePost(token, updatedPost, id)
-        console.log(updatedPost)
+        const response = await updatePost(token, updatedPost)
+        console.log(response)
     }
 
     return (
         <form onSubmit={(event) => {
             event.preventDefault();
-            console.log('form submitted')
+            editPost();
+            fetchPosts();
+            navigate('/posts')
         }}>
             <input
             type='text'
@@ -55,7 +58,7 @@ const EditPost = ({ posts, token }) => {
             />
             <input
             type='checkbox'
-            placeholder={newWillDeliver}
+
             onChange={(event) => setNewWillDeliver(event.target.checked)}
             />
             <button type='submit'>Edit Post</button>

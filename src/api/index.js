@@ -99,9 +99,9 @@ export const createPost = async (token, {title, description, price, location, wi
   }
 }
 
-export const updatePost = async (token, { title, description, price, location, willDeliver, _id}) => {
+export const updatePost = async (token, { title, description, price, location, willDeliver, id}) => {
     try {
-        const response = await fetch(`${baseURL}/posts/${_id}`, {
+        const response = await fetch(`${baseURL}/posts/${id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -116,8 +116,9 @@ export const updatePost = async (token, { title, description, price, location, w
                     willDeliver
                 }
             })
-
         })
+        const results = response.json();
+        return results;
     } catch(err) {
         console.log('error updating post')
     }
