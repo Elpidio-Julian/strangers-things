@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Posts = ({ posts }) => {
     const [confirmDel, setConfirmDel] = useState(false)
-
+    console.log(posts)
     return (
         <div>
             <Link to={'/posts/create-post'}>Add a new Post</Link>

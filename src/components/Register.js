@@ -30,7 +30,7 @@ const Register = ({ setToken, navigate }) => {
         onChange={(event) => setUsername(event.target.value)}
       />
       <input
-        type='text'
+        type='password'
         placeholder='Enter Password'
         onChange={(event) => setPassword(event.target.value)}
       />

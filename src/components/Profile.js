@@ -3,12 +3,13 @@ import React from 'react';
 const Profile = ({ user }) => {
     const messages = user.messages;
     const userID = user._id;
+    console.log(user)
     return (
         <div>
             <div>
                 <h1>Messages from other users!</h1>
                 {
-                messages.map((message) => {
+                messages && messages.map((message) => {
                     const fromUserID = message.fromUser._id;
                     const {username} = message.fromUser;
                     const {title} = message.post;
@@ -26,7 +27,7 @@ const Profile = ({ user }) => {
             <div>
                 <h1>Messages from you</h1>
                 {
-                messages.map((message) => {
+                messages && messages.map((message) => {
                     const fromUserID = message.fromUser._id;
                     if (userID === fromUserID )
                     return(
