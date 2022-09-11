@@ -17,13 +17,15 @@ const CreatePost = ({ token, navigate }) => {
         location,
         willDeliver,
     }
-    
+
     async function addPost() {
         const result = await createPost(token, newPost)
         navigate('/posts')
     }
     return (
-        <form onSubmit={() => addPost()}>
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            addPost()}}>
             <input type='text' placeholder='title' value={title} onChange={(event) => setTitle(event.target.value)}/>
             <input type='text' placeholder='description' value={description} onChange={(event) => setDescription(event.target.value)}/>
             <input type='text' placeholder='price' value={price} onChange={(event) => setPrice(event.target.value)}/>

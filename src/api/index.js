@@ -83,16 +83,17 @@ export const createPost = async (token, { title, description, price, location, w
             },
             body: JSON.stringify({
                 post: {
-                    title: 'test',
-                    description: 'test',
-                    price: 'test',
-                    willDeliver: false
+                    title,
+                    description,
+                    price,
+                    location,
+                    willDeliver
                 }
             })
 
         })
     } catch(err) {
-        console.log('error creating a new post', err)
+        console.log('error creating a new post')
     }
 }
 
