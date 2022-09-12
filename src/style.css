@@ -86,3 +86,8 @@ nav {
     background-color: #969AC5;
     align-items: center;
 }
+.homeDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
