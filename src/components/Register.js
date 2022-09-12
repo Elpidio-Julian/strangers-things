@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
-import { useNavigate } from 'react-router-dom';
 
 const Register = ({ setToken, navigate }) => {
   // props.setToken
@@ -20,16 +19,18 @@ const Register = ({ setToken, navigate }) => {
   }
 
   return (
-    <form onSubmit={(event) => {
+    <form className='loginForm' onSubmit={(event) => {
       event.preventDefault();
       handleSubmit();
     }}>
       <input
+        className='textInput'
         type='text'
         placeholder='Enter Username'
         onChange={(event) => setUsername(event.target.value)}
       />
       <input
+        className='textInput'
         type='password'
         placeholder='Enter Password'
         onChange={(event) => setPassword(event.target.value)}

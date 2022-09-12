@@ -37,21 +37,25 @@ const EditPost = ({ posts, token, navigate, fetchPosts }) => {
             navigate('/posts')
         }}>
             <input
+            className='textInput'
             type='text'
             placeholder={title}
             onChange={(event) => setNewTitle(event.target.value)}
             />
             <input
+            className='textInput'
             type='text'
             placeholder={description}
             onChange={(event) => setNewDescription(event.target.value)}
             />
             <input
+            className='textInput'
             type='text'
             placeholder={location}
             onChange={(event) => setNewLocation(event.target.value)}
             />
             <input
+            className='textInput'
             type='text'
             placeholder={price}
             onChange={(event) => setNewPrice(event.target.value)}

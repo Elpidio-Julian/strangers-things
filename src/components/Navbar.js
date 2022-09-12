@@ -6,17 +6,17 @@ const Navbar = ({ logout, token }) => {
     return (
         <header>
             <nav>
-                <Link to='/'>Home</Link>
-                <Link to='/posts'>Posts</Link>
-                <Link to='/profile'>Profile</Link>
+                <Link className='navLink' to='/'>Home</Link>
+                <Link className='navLink' to='/posts'>Posts</Link>
+                <Link className='navLink' to='/profile'>Profile</Link>
 
                 {
                     !token ? 
                     <>
-                    <Link to='/register'>Register</Link>
-                    <Link to='/login'>Login</Link>
+                    <Link className='navLink' to='/register'>Register</Link>
+                    <Link className='navLink' to='/login'>Login</Link>
                     </>
-                   : <Link to='/' onClick={() => { logout() }}>Logout</Link>
+                   : <Link className='navLink' to='/' onClick={() => { logout() }}>Logout</Link>
                     
                 }
             </nav>

@@ -18,12 +18,12 @@ const Posts = ({ posts, token, fetchPosts }) => {
         await deactivatePost({token, _id});
     }
     return (
+        <div className='postsPageDiv'>
         <div className='postsDiv'>
             <form>
                 <label>Search</label>
-                <input type='text' onChange={(event) => setSearchTerm(event.target.value)}/>
+                <input className='textInput' type='text' onChange={(event) => setSearchTerm(event.target.value)}/>
             </form>
-            <Link to={'/posts/create-post'}>Add a new Post</Link>
        {
         postsToDisplay.map((post) => {
             const {description, location, price, title, _id, isAuthor} = post;
@@ -57,6 +57,10 @@ const Posts = ({ posts, token, fetchPosts }) => {
             )
         })
        }
+       </div>
+       <div>
+       <Link className='createPostButton' to={'/posts/create-post'}>Add a new Post</Link>
+       </div>
        </div>
     )
 }

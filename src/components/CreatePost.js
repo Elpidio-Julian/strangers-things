@@ -26,10 +26,11 @@ const CreatePost = ({ token, fetchPosts, navigate }) => {
         <form onSubmit={(event) => {
             event.preventDefault();
             addPost()}}>
-            <input type='text' placeholder='title' value={title} onChange={(event) => setTitle(event.target.value)}/>
-            <input type='text' placeholder='description' value={description} onChange={(event) => setDescription(event.target.value)}/>
-            <input type='text' placeholder='price' value={price} onChange={(event) => setPrice(event.target.value)}/>
-            <input type='text' placeholder='location' value={location} onChange={(event) => setLocation(event.target.value)}/>
+            <input className='textInput' type='text' placeholder='title' value={title} onChange={(event) => setTitle(event.target.value)}/>
+            <input className='textInput' type='text' placeholder='description' value={description} onChange={(event) => setDescription(event.target.value)}/>
+            <input className='textInput' type='text' placeholder='price' value={price} onChange={(event) => setPrice(event.target.value)}/>
+            <input className='textInput' type='text' placeholder='location' value={location} onChange={(event) => setLocation(event.target.value)}/>
+            <label>Willing to deliver?</label>
             <input
             type='checkbox'
             onChange={(event) => setWillDeliver(event.target.checked)}

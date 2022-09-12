@@ -1,4 +1,70 @@
+body {
+    background-color: #efe7da;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
+}
+.postsDiv {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.postsPageDiv {
+    display: flex;
+    flex-direction: row;
+}
+.createPostButton {
+    background-color: #261447;
+    text-decoration: none;
+    color: white;
+    border: .5vw solid #261447;
+    border-radius: 10%;
+}
+.post {
+    background-color: #7d82b8;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+    align-items: center;
+}
+.navLink {
+    background-color: #261447;
+    text-decoration: none;
+    color: white;
+    border: .5vw solid #261447;
+    border-radius: 10%;
+}
+
+.navLink:hover {
+    background-color: #7040C9;
+    border: .5vw solid #7040C9;
+}
+.textInput {
+    background-color: white;
+}
+button {
+    background-color: #7d82b8;
+    color: white;
+    border: .5vw solid #7d82b8;
+    border-radius: 5%;
+}
+button:hover {
+    background-color: #7040C9;
+    border: .5vw solid #7040C9;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form input {
+    width: 45%;
+    margin-bottom: 2vh;
+}
+nav {
+    margin-bottom: 4vh;
 }
