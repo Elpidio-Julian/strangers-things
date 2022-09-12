@@ -3,17 +3,29 @@ import { Link } from 'react-router-dom'
 import { deactivatePost } from '../api';
 
 
+
 const Posts = ({ posts, token, fetchPosts }) => {
     const [confirmDel, setConfirmDel] = useState(false)
-    console.log(posts)
+    const [searchTerm, setSearchTerm] = useState('');
+    // search form which will create a new array of filtered posts
+    const postMatches = (post, text) => {
+        if(post.title.toUpperCase().includes(text.toUpperCase())) return true
+
+    }
+    const filteredPosts = posts.filter(post => postMatches(post, searchTerm))
+    const postsToDisplay = searchTerm.length ? filteredPosts : posts;
     async function deletePost({token, _id}) {
         await deactivatePost({token, _id});
     }
     return (
-        <div>
+        <div className='postsDiv'>
+            <form>
+                <label>Search</label>
+                <input type='text' onChange={(event) => setSearchTerm(event.target.value)}/>
+            </form>
             <Link to={'/posts/create-post'}>Add a new Post</Link>
        {
-        posts.map((post) => {
+        postsToDisplay.map((post) => {
             const {description, location, price, title, _id, isAuthor} = post;
             return (
                 <div className='post' key={_id}>
