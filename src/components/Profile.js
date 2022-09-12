@@ -5,9 +5,13 @@ const Profile = ({ user }) => {
     const userID = user._id;
     console.log(user)
     return (
+        <div className='profileDiv'>
+        <div className='profileInfo'>
+            <h1>Welcome Back {user.username}</h1>
+        </div>
         <div>
             <div>
-                <h1>Messages from other users!</h1>
+                <h2>Messages from other users!</h2>
                 {
                 messages && messages.map((message) => {
                     const fromUserID = message.fromUser._id;
@@ -15,7 +19,7 @@ const Profile = ({ user }) => {
                     const {title} = message.post;
                     if (userID !== fromUserID ) {
                     return(
-                        <div key={message._id}>
+                        <div className='incomingMsgs' key={message._id}>
                             <p>From user: {username}</p>
                             <p>Message: {message.content}</p>
                             <p>Post Reference: {title}</p>
@@ -31,11 +35,15 @@ const Profile = ({ user }) => {
                     const fromUserID = message.fromUser._id;
                     if (userID === fromUserID )
                     return(
-                        <div key={message._id}>{message.content}</div>
+                        <div className='outgoingMsgs' key={message._id}>
+                            <h2>Post Title: {message.post.title}</h2>
+                            <p>{message.content}</p>
+                        </div>
                     )
                 })
           }
             </div>
+        </div>
         </div>
     )
 }

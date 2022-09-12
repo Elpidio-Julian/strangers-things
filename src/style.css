@@ -68,3 +68,21 @@ form input {
 nav {
     margin-bottom: 4vh;
 }
+.profileDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.outgoingMsgs {
+    display: flex;
+    flex-direction: column;
+    background-color: #969AC5;
+    align-items: center;
+    margin-top: 2vh;
+}
+.incomingMsgs {
+    display: flex;
+    flex-direction: column;
+    background-color: #969AC5;
+    align-items: center;
+}
