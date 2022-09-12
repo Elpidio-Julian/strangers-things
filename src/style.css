@@ -22,6 +22,10 @@ nav {
     border: .5vw solid #261447;
     border-radius: 10%;
 }
+.createPostButton:hover {
+    background-color: #7040C9;
+    border: .5vw solid #7040C9;
+}
 .post {
     background-color: #7d82b8;
     margin-top: 1vh;
@@ -90,4 +94,16 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.postButtons {
+    background-color: #2f4858;
+    text-decoration: none;
+    color: white;
+    margin-bottom: .5vh;
+    border: .5vw solid #2f4858;
+    border-radius: 15%;
+}
+.postButtons:hover {
+    background-color: #6d97b0;
+    border: 1vw solid #6d97b0;
 }

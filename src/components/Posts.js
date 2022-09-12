@@ -36,21 +36,21 @@ const Posts = ({ posts, token, fetchPosts }) => {
                     {
                         isAuthor ? (
                             <>
-                            <Link to={`/posts/${_id}`}>View</Link>
+                            <Link className='postButtons' to={`/posts/${_id}`}>View</Link>
                             {
                                 confirmDel ? (
-                                    <button onClick={() => {
+                                    <button className='postButtons' onClick={() => {
                                         deletePost({token, _id})
                                         fetchPosts();
                                     }}>Confirm Delete</button>
                                     ) : (
-                                    <button onClick={() => setConfirmDel(true)}>Delete</button>
+                                    <button className='postButtons' onClick={() => setConfirmDel(true)}>Delete</button>
                                     )
                                 }
-                            <Link to={`/posts/edit-posts/${_id}`}>Edit</Link>
+                            <Link className='postButtons' to={`/posts/edit-posts/${_id}`}>Edit</Link>
                             </>
                         ) : (
-                            <Link to={`/posts/${_id}`}>View</Link>
+                            <Link className='postButtons' to={`/posts/${_id}`}>View</Link>
                         )
                     }
                 </div>
