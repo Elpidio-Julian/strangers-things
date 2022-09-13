@@ -77,7 +77,7 @@ const App = () => {
         />
         <Route 
         path='/posts/:id' 
-        element={<SinglePostView posts={ posts } token={ token }/>}
+        element={<SinglePostView posts={ posts } token={ token } getMe={ getMe } navigate={ navigate }/>}
         />
         <Route 
         path='/posts/edit-posts/:id' 

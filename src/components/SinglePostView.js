@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { deliverMessage } from '../api'
 
-const SendMessage = ({ id, token }) => {
+const SendMessage = ({ id, token, navigate }) => {
     const [message, setMessage] = useState('')
 
     async function sendMessage() {
@@ -13,6 +13,10 @@ const SendMessage = ({ id, token }) => {
         <form onSubmit={(event) => {
             event.preventDefault();
             sendMessage()
+            getMe()
+            navigate('/profile')
+            
+
         }}>
             <input type='text' placeholder='Enter Message Here' onChange={(event) => setMessage({content: event.target.value})}/>
             <button type='submit'>send message</button>
@@ -21,7 +25,7 @@ const SendMessage = ({ id, token }) => {
 }
 
 
-const SinglePostView = ({ posts, token }) => {
+const SinglePostView = ({ posts, token, getMe, navigate }) => {
     const [activateMessage, setActivateMessage] = useState(false);
 
     const { id } = useParams();
@@ -43,7 +47,7 @@ const SinglePostView = ({ posts, token }) => {
             <div>
                 <button onClick={() => setActivateMessage(!activateMessage)}>Message this user</button>
                 {
-                    activateMessage && <SendMessage id={id} token={ token } />
+                    activateMessage && <SendMessage id={id} token={ token } getMe={ getMe } navigate={ navigate }/>
                 }
             </div>
         </div>
