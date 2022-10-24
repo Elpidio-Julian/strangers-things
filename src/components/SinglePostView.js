@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { deliverMessage } from '../api'
 
-const SendMessage = ({ id, token, navigate }) => {
+const SendMessage = ({ id, token, navigate, getMe }) => {
     const [message, setMessage] = useState('')
 
     async function sendMessage() {
